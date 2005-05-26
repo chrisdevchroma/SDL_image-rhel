@@ -1,7 +1,7 @@
 Summary: A sample image loading library for SDL.
 Name: SDL_image
 Version: 1.2.3
-Release: 7
+Release: 8
 Source: http://www.libsdl.org/projects/SDL_image/src/%{name}-%{version}.tar.gz
 Patch: SDL_image-ppc64.patch
 Patch2: SDL_image-1.2.3-autofoo.patch
@@ -73,6 +73,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/SDL/*
 
 %changelog
+* Thu May 26 2005 Bill Nottingham <notting@redhat.com> 1.2.3-8
+- rebuild
+
 * Wed Feb  9 2005 Thomas Woerner <twoerner@redhat.com> 1.2.3-7
 - rebuild
 
