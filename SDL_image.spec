@@ -1,15 +1,13 @@
-Summary: A sample image loading library for SDL.
+Summary: Image loading library for SDL
 Name: SDL_image
-Version: 1.2.3
-Release: 9
-Source: http://www.libsdl.org/projects/SDL_image/src/%{name}-%{version}.tar.gz
-Patch: SDL_image-ppc64.patch
-Patch2: SDL_image-1.2.3-autofoo.patch
-URL: http://www.libsdl.org/projects/SDL_image/index.html
+Version: 1.2.4
+Release: 1%{?dist}
+Source: http://www.libsdl.org/projects/SDL_image/release/%{name}-%{version}.tar.gz
+URL: http://www.libsdl.org/projects/SDL_image/
 License: LGPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-buildroot
-BuildRequires: SDL-devel >= 1.2.4-1, libjpeg-devel, libpng-devel
+BuildRequires: SDL-devel >= 1.2.4-1, libjpeg-devel, libpng-devel, libtiff-devel
 
 %description
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -18,10 +16,10 @@ device.  This package contains a simple library for loading images of
 various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL surfaces.
 
 %package devel
-Summary: Development files for the SDL image loading library.
+Summary: Development files for the SDL image loading library
 Group: Development/Libraries
-Requires: %{name} = %{version}
-Requires: SDL-devel >= 1.2.3-5
+Requires: %{name} = %{version}-%{release}
+Requires: SDL-devel >= 1.2.4-1
 
 %description devel
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -32,16 +30,10 @@ the SDL image loading library contained in the SDL_image package.
 %prep
 
 %setup -q
-%patch -p1 -b .ppc64
-%patch2 -p1 -b .autofoo
 
 %build
-# replaced by patch
-#libtoolize --copy --force
-#aclocal
-#autoconf
-#automake --foreign --include-deps --add-missing --force-missing --copy -a
-%configure --enable-tif
+# XCF support is crashy in 1.2.4
+%configure --disable-dependency-tracking --enable-tif
 make %{?_smp_mflags}
 
 %install
@@ -73,6 +65,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/SDL/*
 
 %changelog
+* Sun Jun 19 2005 Ville Skyttä <ville.skytta at iki.fi> - 1.2.4-1
+- 1.2.4, patches obsolete.
+- Bring back TIFF support (BuildRequire libtiff-devel).
+- Build with dependency tracking disabled.
+- Require exact EVR of main package in -devel.
+
 * Thu May 26 2005 Bill Nottingham <notting@redhat.com> 1.2.3-9
 - rebuild
 
