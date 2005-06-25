@@ -1,7 +1,7 @@
 Summary: Image loading library for SDL
 Name: SDL_image
 Version: 1.2.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 Source: http://www.libsdl.org/projects/SDL_image/release/%{name}-%{version}.tar.gz
 URL: http://www.libsdl.org/projects/SDL_image/
 License: LGPL
@@ -65,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/SDL/*
 
 %changelog
+* Sat Jun 25 2005 Ville Skyttä <ville.skytta at iki.fi> - 1.2.4-2
+- Rebuild.
+
 * Sun Jun 19 2005 Ville Skyttä <ville.skytta at iki.fi> - 1.2.4-1
 - 1.2.4, patches obsolete.
 - Bring back TIFF support (BuildRequire libtiff-devel).
