@@ -1,13 +1,19 @@
-Summary: Image loading library for SDL
-Name: SDL_image
-Version: 1.2.4
-Release: 2%{?dist}
-Source: http://www.libsdl.org/projects/SDL_image/release/%{name}-%{version}.tar.gz
-URL: http://www.libsdl.org/projects/SDL_image/
-License: LGPL
-Group: System Environment/Libraries
-BuildRoot: %{_tmppath}/%{name}-buildroot
-BuildRequires: SDL-devel >= 1.2.4-1, libjpeg-devel, libpng-devel, libtiff-devel
+Name:		SDL_image
+Version:	1.2.4
+Release:	4%{?dist}
+Summary:	Image loading library for SDL
+
+Group:		System Environment/Libraries
+License:	LGPL
+URL:		http://www.libsdl.org/projects/SDL_image/
+Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildRequires: 	SDL-devel >= 1.2.4-1
+BuildRequires:	libjpeg-devel
+BuildRequires:	libpng-devel
+BuildRequires:	libtiff-devel
+
 
 %description
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -15,11 +21,13 @@ designed to provide fast access to the graphics frame buffer and audio
 device.  This package contains a simple library for loading images of
 various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL surfaces.
 
+
 %package devel
-Summary: Development files for the SDL image loading library
-Group: Development/Libraries
-Requires: %{name} = %{version}-%{release}
-Requires: SDL-devel >= 1.2.4-1
+Summary:	Development files for the SDL image loading library
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	SDL-devel >= 1.2.4-1
+
 
 %description devel
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -27,30 +35,35 @@ designed to provide fast access to the graphics frame buffer and audio
 device.  This package contains the files needed for development using
 the SDL image loading library contained in the SDL_image package.
 
-%prep
 
+%prep
 %setup -q
+
 
 %build
 # XCF support is crashy in 1.2.4
 %configure --disable-dependency-tracking --enable-tif
 make %{?_smp_mflags}
 
+
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %makeinstall
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 ./libtool --mode=install /usr/bin/install showimage $RPM_BUILD_ROOT%{_bindir}
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+
 %post -p /sbin/ldconfig
 
+
 %postun -p /sbin/ldconfig
+
 
 %files
 %defattr(-,root,root)
@@ -58,13 +71,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/showimage
 %{_libdir}/lib*.so.*
 
+
 %files devel
 %defattr(-,root,root)
 %{_libdir}/*.a
 %{_libdir}/lib*.so
 %{_includedir}/SDL/*
 
+
 %changelog
+* Tue Sep 27 2005 Brian Pepple <bdpepple@ameritech.net> - 1.2.4-4
+- Bump release so it upgrades from FC4.
+- General spec formatting cleanup.
+
 * Sat Jun 25 2005 Ville Skyttä <ville.skytta at iki.fi> - 1.2.4-2
 - Rebuild.
 
