@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.4
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -80,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Feb 13 2006 Brian Pepple <bdpepple@ameritech.net> - 1.2.4-5
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
 * Tue Sep 27 2005 Brian Pepple <bdpepple@ameritech.net> - 1.2.4-4
 - Bump release so it upgrades from FC4.
 - General spec formatting cleanup.
