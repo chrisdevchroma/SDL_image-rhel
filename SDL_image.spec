@@ -1,6 +1,6 @@
 Name:		SDL_image
-Version:	1.2.4
-Release:	5%{?dist}
+Version:	1.2.5
+Release:	1%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -9,7 +9,7 @@ URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires: 	SDL-devel >= 1.2.4-1
+BuildRequires: 	SDL-devel >= 1.2.10
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
@@ -23,17 +23,15 @@ various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL surfaces.
 
 
 %package devel
-Summary:	Development files for the SDL image loading library
+Summary:	Development files for %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	SDL-devel >= 1.2.4-1
+Requires:	SDL-devel >= 1.2.10
 
 
 %description devel
-Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
-designed to provide fast access to the graphics frame buffer and audio
-device.  This package contains the files needed for development using
-the SDL image loading library contained in the SDL_image package.
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
 
 
 %prep
@@ -42,7 +40,7 @@ the SDL image loading library contained in the SDL_image package.
 
 %build
 # XCF support is crashy in 1.2.4
-%configure --disable-dependency-tracking --enable-tif
+%configure --disable-dependency-tracking --enable-tif --disable-static
 make %{?_smp_mflags}
 
 
@@ -52,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 ./libtool --mode=install /usr/bin/install showimage $RPM_BUILD_ROOT%{_bindir}
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %clean
@@ -74,12 +72,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(-,root,root)
-%{_libdir}/*.a
 %{_libdir}/lib*.so
-%{_includedir}/SDL/*
+%{_includedir}/SDL/
 
 
 %changelog
+* Sat Aug 26 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-1
+- Update to 1.2.5.
+- Simplify description & summary for devel package.
+- Update SDL version required.
+- Use disable-static configure flag.
+
 * Mon Feb 13 2006 Brian Pepple <bdpepple@ameritech.net> - 1.2.4-5
 - rebuilt for new gcc4.1 snapshot and glibc changes
 
