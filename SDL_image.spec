@@ -1,12 +1,13 @@
 Name:		SDL_image
 Version:	1.2.5
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
 License:	LGPL
 URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
+Patch0:		%{name}-1.2.5-IMG_xpm.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: 	SDL-devel >= 1.2.10
@@ -36,6 +37,7 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
+%patch0 -p0 -b .imgxpm
 
 
 %build
@@ -77,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Oct 31 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-3
+- Add patch to fix IMG_ReadXPMFromArray crash. (#213282)
+
 * Thu Aug 31 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-2
 - Rebuild for FC6.
 
