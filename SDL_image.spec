@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.5
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -42,7 +42,12 @@ developing applications that use %{name}.
 
 %build
 # XCF support is crashy in 1.2.4
-%configure --disable-dependency-tracking --enable-tif --disable-static
+%configure --disable-dependency-tracking	\
+	--enable-tif				\
+	--disable-jpg-shared			\
+	--disable-png-shared			\
+	--disable-tif-shared			\
+	--disable-static
 make %{?_smp_mflags}
 
 
@@ -79,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Dec 19 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-4
+- Disable run-time loading of libs. (#219902)
+
 * Tue Oct 31 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-3
 - Add patch to fix IMG_ReadXPMFromArray crash. (#213282)
 
