@@ -1,16 +1,15 @@
 Name:		SDL_image
-Version:	1.2.5
-Release:	4%{?dist}
+Version:	1.2.4
+Release:	2%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
 License:	LGPL
 URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
-Patch0:		%{name}-1.2.5-IMG_xpm.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires: 	SDL-devel >= 1.2.10
+BuildRequires: 	SDL-devel >= 1.2.4-1
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
@@ -24,30 +23,26 @@ various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL surfaces.
 
 
 %package devel
-Summary:	Development files for %{name}
+Summary:	Development files for the SDL image loading library
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	SDL-devel >= 1.2.10
+Requires:	SDL-devel >= 1.2.4-1
 
 
 %description devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use %{name}.
+Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
+designed to provide fast access to the graphics frame buffer and audio
+device.  This package contains the files needed for development using
+the SDL image loading library contained in the SDL_image package.
 
 
 %prep
 %setup -q
-%patch0 -p0 -b .imgxpm
 
 
 %build
 # XCF support is crashy in 1.2.4
-%configure --disable-dependency-tracking	\
-	--enable-tif				\
-	--disable-jpg-shared			\
-	--disable-png-shared			\
-	--disable-tif-shared			\
-	--disable-static
+%configure --disable-dependency-tracking --enable-tif
 make %{?_smp_mflags}
 
 
@@ -57,7 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 ./libtool --mode=install /usr/bin/install showimage $RPM_BUILD_ROOT%{_bindir}
 
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %clean
@@ -79,37 +74,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(-,root,root)
+%{_libdir}/*.a
 %{_libdir}/lib*.so
-%{_includedir}/SDL/
+%{_includedir}/SDL/*
 
 
 %changelog
-* Tue Dec 19 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-4
-- Disable run-time loading of libs. (#219902)
+* Sat Jun 09 2007 Nigel Jones <dev@nigelj.com> - 1.2.4-2
+- Bump for EL-4
 
-* Tue Oct 31 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-3
-- Add patch to fix IMG_ReadXPMFromArray crash. (#213282)
-
-* Thu Aug 31 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-2
-- Rebuild for FC6.
-
-* Sat Aug 26 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-1
-- Update to 1.2.5.
-- Simplify description & summary for devel package.
-- Update SDL version required.
-- Use disable-static configure flag.
-
-* Mon Feb 13 2006 Brian Pepple <bdpepple@ameritech.net> - 1.2.4-5
-- rebuilt for new gcc4.1 snapshot and glibc changes
-
-* Tue Sep 27 2005 Brian Pepple <bdpepple@ameritech.net> - 1.2.4-4
+* Tue Sep 27 2005 Brian Pepple <bdpepple@ameritech.net> - 1.2.4-1
 - Bump release so it upgrades from FC4.
 - General spec formatting cleanup.
-
-* Sat Jun 25 2005 Ville Skyttä <ville.skytta at iki.fi> - 1.2.4-2
-- Rebuild.
-
-* Sun Jun 19 2005 Ville Skyttä <ville.skytta at iki.fi> - 1.2.4-1
 - 1.2.4, patches obsolete.
 - Bring back TIFF support (BuildRequire libtiff-devel).
 - Build with dependency tracking disabled.
