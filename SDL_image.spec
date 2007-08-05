@@ -1,10 +1,10 @@
 Name:		SDL_image
 Version:	1.2.6
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
-License:	LGPL
+License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -82,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Aug  5 2007 Brian Pepple <bpepple@fedoraproject.org> - 1.2.6-2
+- Update license tag.
+
 * Mon Jul 30 2007 Brian Pepple <bpepple@fedoraproject.org> - 1.2.6-1
 - Update to 1.2.6.
 - remove IMG_xpm patch.  fixed upstream.
