@@ -1,10 +1,10 @@
 Name:		SDL_image
 Version:	1.2.5
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
-License:	LGPL
+License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
 Patch0:		%{name}-1.2.5-IMG_xpm.patch
@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Aug  5 2007 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-5
+- Update license tag.
+
 * Tue Dec 19 2006 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-4
 - Disable run-time loading of libs. (#219902)
 
