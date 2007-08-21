@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.6
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -82,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Aug 21 2007 Brian Pepple <bpepple@fedoraproject.org> - 1.2.6-3
+- Rebuild.
+
 * Sun Aug  5 2007 Brian Pepple <bpepple@fedoraproject.org> - 1.2.6-2
 - Update license tag.
 
