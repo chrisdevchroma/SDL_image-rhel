@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.5
-Release:	6%{?dist}
+Release:	7%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -9,6 +9,7 @@ URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
 Patch0:		%{name}-1.2.5-IMG_xpm.patch
 Patch1:		%{name}-buffer-overflow.patch
+Patch2:		%{name}-IMG_lbm.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: 	SDL-devel >= 1.2.10
@@ -40,6 +41,7 @@ developing applications that use %{name}.
 %setup -q
 %patch0 -p0 -b .imgxpm
 %patch1 -p2 -b .overflow
+%patch2 -p2 -b .ilbm
 
 
 %build
@@ -86,7 +88,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Thu Jan 24 2008 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-5
+* Tue Jan 29 2008 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-7
+- Add patch to fix ILBM image buffer overflow. (#430693)
+
+* Thu Jan 24 2008 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-6
 - Add patch to fix buffer-overflow. (#430100)
 
 * Sun Aug  5 2007 Brian Pepple <bpepple@fedoraproject.org> - 1.2.5-5
