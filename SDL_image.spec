@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.6
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -85,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Feb  8 2008 Brian Pepple <bpepple@fedoraproject.org> - 1.2.6-6
+- Rebuild for gcc-4.3.
+
 * Tue Jan 29 2008 Brian Pepple <bpepple@fedoraproject.org> - 1.2.6-5
 - Add patch to fix ILBM image buffer overflow. (#430693)
 
