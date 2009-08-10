@@ -1,14 +1,12 @@
 Name:		SDL_image
-Version:	1.2.6
-Release:	8%{?dist}
+Version:	1.2.7
+Release:	1%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
-Patch0:		%{name}-buffer-overflow.patch
-Patch1:		%{name}-IMG_lbm.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: 	SDL-devel >= 1.2.10
@@ -38,8 +36,7 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p2 -b .overflow
-%patch1 -p2 -b .ilbm
+
 
 %build
 # XCF support is crashy in 1.2.4
@@ -85,6 +82,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Aug  9 2009 Brian Pepple <bpepple@fedoraproject.org> - 1.2.7-1
+- Update to 1.2.7.
+- Drop IMG_lbm patch.  Fixed upstream.
+- Drop buffer overflow patch.  Fixed upstream.
+
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.6-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
