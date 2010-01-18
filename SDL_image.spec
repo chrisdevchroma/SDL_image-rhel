@@ -1,5 +1,5 @@
 Name:		SDL_image
-Version:	1.2.7
+Version:	1.2.10
 Release:	1%{?dist}
 Summary:	Image loading library for SDL
 
@@ -27,6 +27,7 @@ Summary:	Development files for %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL-devel >= 1.2.10
+Requires:	pkgconfig
 
 
 %description devel
@@ -79,9 +80,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_libdir}/lib*.so
 %{_includedir}/SDL/
+%{_libdir}/pkgconfig/%{name}.pc
 
 
 %changelog
+* Mon Jan 18 2010 Brian Pepple <bpepple@fedoraproject.org> - 1.2.10-1
+- Update to 1.2.10.
+
 * Sun Aug  9 2009 Brian Pepple <bpepple@fedoraproject.org> - 1.2.7-1
 - Update to 1.2.7.
 - Drop IMG_lbm patch.  Fixed upstream.
