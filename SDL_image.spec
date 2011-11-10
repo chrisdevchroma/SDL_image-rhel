@@ -14,6 +14,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 
+Patch0:		SDL_image-1.2.10-libpng15.patch
 
 %description
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -38,6 +39,7 @@ developing applications that use %{name}.
 %prep
 %setup -q
 
+%patch0 -p1
 
 %build
 # XCF support is crashy in 1.2.4
