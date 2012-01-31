@@ -1,6 +1,6 @@
 Name:		SDL_image
-Version:	1.2.10
-Release:	4%{?dist}
+Version:	1.2.12
+Release:	1%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -14,7 +14,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 
-Patch0:		SDL_image-1.2.10-libpng15.patch
+#Patch0:		SDL_image-1.2.10-libpng15.patch
 
 %description
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -39,7 +39,7 @@ developing applications that use %{name}.
 %prep
 %setup -q
 
-%patch0 -p1
+#%patch0 -p1
 
 %build
 # XCF support is crashy in 1.2.4
@@ -86,6 +86,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan 31 2012 Jon Ciesla <limburgher@gmail.com> - 1.2.12-1
+- New upstream.
+- libpng15 patch upstreamed.
+
 * Thu Jan 12 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.10-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
