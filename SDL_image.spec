@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.12
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -86,6 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon May 07 2012 Jon Ciesla <limburgher@gmail.com> - 1.2.12-2
+- Rebuild for new libtiff.
+
 * Tue Jan 31 2012 Jon Ciesla <limburgher@gmail.com> - 1.2.12-1
 - New upstream.
 - libpng15 patch upstreamed.
