@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.12
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -86,6 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jan 18 2013 Adam Tkac <atkac redhat com> - 1.2.12-5
+- rebuild due to "jpeg8-ABI" feature drop
+
 * Fri Dec 21 2012 Adam Tkac <atkac redhat com> - 1.2.12-4
 - rebuild against new libjpeg
 
