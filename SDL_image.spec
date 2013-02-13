@@ -1,6 +1,6 @@
 Name:		SDL_image
 Version:	1.2.12
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -86,6 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Fri Jan 18 2013 Adam Tkac <atkac redhat com> - 1.2.12-5
 - rebuild due to "jpeg8-ABI" feature drop
 
