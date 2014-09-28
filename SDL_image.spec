@@ -1,6 +1,11 @@
 Name:		SDL_image
+<<<<<<< HEAD
 Version:	1.2.10
 Release:	1%{?dist}
+=======
+Version:	1.2.12
+Release:	9%{?dist}
+>>>>>>> master
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -14,6 +19,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 
+#Patch0:		SDL_image-1.2.10-libpng15.patch
 
 %description
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -38,6 +44,7 @@ developing applications that use %{name}.
 %prep
 %setup -q
 
+#%patch0 -p1
 
 %build
 # XCF support is crashy in 1.2.4
@@ -84,6 +91,46 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+<<<<<<< HEAD
+=======
+* Fri Aug 15 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+* Fri Jun 06 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+* Fri Aug 02 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
+* Fri Jan 18 2013 Adam Tkac <atkac redhat com> - 1.2.12-5
+- rebuild due to "jpeg8-ABI" feature drop
+
+* Fri Dec 21 2012 Adam Tkac <atkac redhat com> - 1.2.12-4
+- rebuild against new libjpeg
+
+* Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+* Mon May 07 2012 Jon Ciesla <limburgher@gmail.com> - 1.2.12-2
+- Rebuild for new libtiff.
+
+* Tue Jan 31 2012 Jon Ciesla <limburgher@gmail.com> - 1.2.12-1
+- New upstream.
+- libpng15 patch upstreamed.
+
+* Thu Jan 12 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.10-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+* Sun Nov 06 2011 Jon Ciesla <limb@jcomserv.net> - 1.2.10-3
+- Rebuilt for libpng 1.5.
+
+* Mon Feb 07 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+>>>>>>> master
 * Mon Jan 18 2010 Brian Pepple <bpepple@fedoraproject.org> - 1.2.10-1
 - Update to 1.2.10.
 
