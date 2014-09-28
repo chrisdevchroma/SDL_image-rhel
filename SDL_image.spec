@@ -1,11 +1,6 @@
 Name:		SDL_image
-<<<<<<< HEAD
-Version:	1.2.10
-Release:	1%{?dist}
-=======
 Version:	1.2.12
 Release:	9%{?dist}
->>>>>>> master
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -91,8 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-<<<<<<< HEAD
-=======
 * Fri Aug 15 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
@@ -130,7 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 * Mon Feb 07 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.10-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
->>>>>>> master
 * Mon Jan 18 2010 Brian Pepple <bpepple@fedoraproject.org> - 1.2.10-1
 - Update to 1.2.10.
 
@@ -277,3 +269,4 @@ rm -rf $RPM_BUILD_ROOT
 
 * Wed Nov 29 2000 Than Ngo <than@redhat.com>
 - first build for 7.1
+
