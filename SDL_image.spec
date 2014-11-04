@@ -1,8 +1,9 @@
 %global _hardened_build 1
+%{!?__global_ldflags: %global __global_ldflags -Wl,-z,relro -Wl,-z,now}
 
 Name:		SDL_image
 Version:	1.2.12
-Release:	10%{?dist}
+Release:	11%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -88,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Thu Oct 23 2014 Moez Roy <moez.roy@gmail.com> - 1.2.12-10
+* Thu Oct 23 2014 Moez Roy <moez.roy@gmail.com> - 1.2.12-11
 - Add global harderning flags
 
 * Fri Aug 15 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-9
