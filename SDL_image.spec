@@ -3,7 +3,7 @@
 
 Name:		SDL_image
 Version:	1.2.12
-Release:	11%{?dist}
+Release:	12%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -89,6 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jun 16 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Thu Oct 23 2014 Moez Roy <moez.roy@gmail.com> - 1.2.12-11
 - Add global harderning flags
 
