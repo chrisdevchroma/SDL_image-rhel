@@ -3,21 +3,19 @@
 
 Name:		SDL_image
 Version:	1.2.12
-Release:	12%{?dist}
+Release:	13%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch0:         SDL_image-1.2.12-interlaced-png-warning-fix.patch
 
 BuildRequires: 	SDL-devel >= 1.2.10
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
-
-#Patch0:		SDL_image-1.2.10-libpng15.patch
 
 %description
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -41,8 +39,8 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
-#%patch0 -p1
 
 %build
 # XCF support is crashy in 1.2.4
@@ -56,16 +54,11 @@ make %{?_smp_mflags}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 ./libtool --mode=install /usr/bin/install showimage $RPM_BUILD_ROOT%{_bindir}
 
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 
 %post -p /sbin/ldconfig
@@ -75,20 +68,21 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%defattr(-,root,root)
 %doc README CHANGES COPYING
 %{_bindir}/showimage
 %{_libdir}/lib*.so.*
 
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/lib*.so
 %{_includedir}/SDL/
 %{_libdir}/pkgconfig/%{name}.pc
 
 
 %changelog
+* Sat Dec 26 2015 Hans de Goede <hdegoede@redhat.com> - 1.2.12-13
+- Fix runtime warnings when loading interlaced pngs (rhbz#829419)
+
 * Tue Jun 16 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.12-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
