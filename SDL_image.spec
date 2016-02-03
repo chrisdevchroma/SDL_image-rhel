@@ -3,7 +3,7 @@
 
 Name:		SDL_image
 Version:	1.2.12
-Release:	13%{?dist}
+Release:	14%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -80,6 +80,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.12-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Sat Dec 26 2015 Hans de Goede <hdegoede@redhat.com> - 1.2.12-13
 - Fix runtime warnings when loading interlaced pngs (rhbz#829419)
 
