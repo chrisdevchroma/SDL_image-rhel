@@ -3,7 +3,7 @@
 
 Name:		SDL_image
 Version:	1.2.12
-Release:	18%{?dist}
+Release:	19%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -80,6 +80,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Fri Feb 09 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 1.2.12-19
+- Escape macros in %%changelog
+
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.12-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
@@ -283,7 +286,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 - enable tiff support
 
 * Tue Dec 19 2000 Than Ngo <than@redhat.com>
-- added missing %post and %%postun
+- added missing %%post and %%postun
 
 * Wed Nov 29 2000 Than Ngo <than@redhat.com>
 - first build for 7.1
