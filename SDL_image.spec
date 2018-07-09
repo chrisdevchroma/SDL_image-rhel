@@ -12,6 +12,7 @@ URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
 Patch0:         SDL_image-1.2.12-interlaced-png-warning-fix.patch
 
+BuildRequires:  gcc
 BuildRequires: 	SDL-devel >= 1.2.10
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
