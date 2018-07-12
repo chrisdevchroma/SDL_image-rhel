@@ -3,7 +3,7 @@
 
 Name:		SDL_image
 Version:	1.2.12
-Release:	19%{?dist}
+Release:	20%{?dist}
 Summary:	Image loading library for SDL
 
 Group:		System Environment/Libraries
@@ -81,6 +81,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.12-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Fri Feb 09 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 1.2.12-19
 - Escape macros in %%changelog
 
