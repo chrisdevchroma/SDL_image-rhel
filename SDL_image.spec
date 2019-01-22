@@ -62,10 +62,7 @@ mkdir -p $RPM_BUILD_ROOT%{_bindir}
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
-%post -p /sbin/ldconfig
-
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 
 %files
