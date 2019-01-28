@@ -6,7 +6,6 @@ Version:	1.2.12
 Release:	20%{?dist}
 Summary:	Image loading library for SDL
 
-Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://www.libsdl.org/projects/SDL_image/
 Source0:	http://www.libsdl.org/projects/%{name}/release/%{name}-%{version}.tar.gz
@@ -27,7 +26,6 @@ various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL surfaces.
 
 %package devel
 Summary:	Development files for %{name}
-Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	SDL-devel >= 1.2.10
 Requires:	pkgconfig
